@@ -13,7 +13,7 @@ namespace Observer
         {
             var reporter = new TemperatureReporter();
 
-            Monitor.Subscribe(reporter);
+            reporter.Subscribe(Monitor);
 
             new ExternalClass().DoWork(reporter);
 
@@ -36,6 +36,8 @@ namespace Observer
             //do work...
             reporter.Unsubscribe();
             reporter.Subscribe(NewMonitor);
+
+            NewMonitor.GetTemperature();
         }
     }
 }
