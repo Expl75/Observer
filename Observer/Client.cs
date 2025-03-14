@@ -15,8 +15,6 @@ namespace Observer
 
             reporter.Subscribe(Monitor);
 
-            new ExternalClass().DoWork(reporter);
-
             var i = 0;
             while (i < 5)
             {
@@ -24,20 +22,6 @@ namespace Observer
 
                 i++;
             }
-        }
-    }
-
-    public class ExternalClass
-    {
-        public TemperatureMonitor NewMonitor = new TemperatureMonitor();
-
-        public void DoWork(TemperatureReporter reporter)
-        {
-            //do work...
-            reporter.Unsubscribe();
-            reporter.Subscribe(NewMonitor);
-
-            NewMonitor.GetTemperature();
         }
     }
 }
